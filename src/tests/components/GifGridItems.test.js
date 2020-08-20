@@ -36,7 +36,7 @@ describe('Pruebas en <GifGridItem/>', () => {
         
         const div = wrapper.find('div');
         const className = div.prop('className');
-        expect(className.includes('animate__fadeIn')).toBe( true )
+        expect(className.includes('animate__fadeIn')).toBe( true );
 
     });
 })
