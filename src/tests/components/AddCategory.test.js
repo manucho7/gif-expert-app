@@ -6,9 +6,13 @@ import React from 'react';
 
 describe('Pruebas en <AddCategory/>', () => {
     
-    const setCategories = () => {};
-    const wrapper = shallow( <AddCategory setCategories={ setCategories } /> );
+    const setCategories = jest.fn();
+    let wrapper = shallow( <AddCategory setCategories={ setCategories } /> );
 
+    beforeEach( () => {
+        jest.clearAllMocks();
+        wrapper = shallow( <AddCategory setCategories={ setCategories } /> );
+    });
     
     test('debe mostrarse correctamente', () => {
 
@@ -26,7 +30,12 @@ describe('Pruebas en <AddCategory/>', () => {
 
     });
 
-    test('', () => {
+    test('no debe de postear la info on submit', () => {
 
-    })
+        wrapper.find('form').simulate('submit', { preventDefault(){} });
+
+        expect( setCategories ).not.toHaveBeenCalled();
+
+    });
+
 })
